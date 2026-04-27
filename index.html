@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buenas noches Aracely</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(#0f2027, #203a43, #2c5364);
+    color: white;
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* 🌟 ESTRELLAS */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.stars span {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: animarEstrellas linear infinite;
+}
+
+@keyframes animarEstrellas {
+    0% { transform: translateY(-10vh); opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+}
+
+/* 📦 CONTENEDOR */
+.container {
+    max-width: 400px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* 🔘 BOTÓN */
+button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #ffd700, #ffcc00);
+    color: black;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #ffd700;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* 💌 MENSAJE */
+.mensaje {
+    display: none;
+    margin-top: 30px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* 🌷 TULIPANES ANIMADOS */
+.flores {
+    font-size: 40px;
+    margin-top: 20px;
+    opacity: 0;
+    animation: aparecerFlores 1.5s forwards, cambiarColor 6s infinite linear;
+}
+
+/* ✨ Animación de entrada */
+@keyframes aparecerFlores {
+    0% {transform: scale(0); opacity: 0;}
+    60% {transform: scale(1.2);}
+    100% {transform: scale(1); opacity: 1;}
+}
+
+/* 🌈 Cambio de color */
+@keyframes cambiarColor {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+/* 🎬 Fade */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="container">
+    <h1>🌙 Para Aracely 💖</h1>
+    <button onclick="mostrarMensaje()">Toca aquí 💌</button>
+
+    <div class="mensaje" id="mensaje">
+        <h2>Buenas noches, Aracely 💕</h2>
+        <p>Espero que haya tenido un bonito día lleno de cosas lindas ✨</p>
+        <p>Que descanse muy bien esta noche 😴</p>
+        <p><strong>Como dirían los Minions para usted:</strong></p>
+        <p style="font-size:18px;">💛 "Dulces sueños ☺️" 💛</p>
+    </div>
+
+    <div class="flores" id="flores">
+        🌷🌷🌷🌷🌷
+    </div>
+</div>
+
+<script>
+function crearEstrellas() {
+    const starsContainer = document.getElementById("stars");
+
+    for (let i = 0; i < 80; i++) {
+        let estrella = document.createElement("span");
+
+        let size = Math.random() * 3;
+        estrella.style.width = size + "px";
+        estrella.style.height = size + "px";
+
+        estrella.style.left = Math.random() * 100 + "vw";
+        estrella.style.animationDuration = (Math.random() * 6 + 4) + "s";
+        estrella.style.opacity = Math.random();
+
+        starsContainer.appendChild(estrella);
+    }
+}
+
+crearEstrellas();
+
+function mostrarMensaje() {
+    document.getElementById("mensaje").style.display = "block";
+}
+</script>
+
+</body>
+</html>
